@@ -6,28 +6,30 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= render 'layouts/shim' %>
 </head>
 <body>
-	<header class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <%= link_to "The Horses Mouth", '#', id: "Horses_head" %>
-          <nav>
-            <ul class="nav pull-right">
-              <li><%= link_to "Home",    '#' %></li>
-              <li><%= link_to "Help",    '#' %></li>
-              <li><%= link_to "Sign in", '#' %></li>
-            </ul>
-          </nav>
+	<%= render 'layouts/header' %>
+	
+    <div class="container-fluid">
+    	<div class="row-fluid">
+    		<div class="span3">
+    			<div class="well sidebar-nav">
+                  <ul class="nav nav-list">
+                    <li class="nav-header">Sports</li>
+                    <%= render 'layouts/categories' %>
+    		
+                  </ul>
+                </div><!--/.well -->
+              </div>
+              <div class="span9">
+                <div class="hero-unit">
+                    <%= yield %>
+      		    </div>
+      		    <%= render 'layouts/footer' %>
+              </div>
         </div>
-      </div>
-    </header>
-    <div class="container">
-      <h1><%= full_title(yield(:title)) %></h1>
-      <%= yield %>
     </div>
 </body>
 </html>
